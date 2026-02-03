@@ -56,6 +56,7 @@ FROM customer
 GROUP BY gender;
 ```
 
+### Objective: Identify high-value customers who remain strong spenders despite discounts.
 
 2. Which customers used a discount but still spent more than the average purchase amount?
 ```sql
@@ -65,7 +66,7 @@ WHERE discount_applied = 'Yes'
   AND purchase_amount >= (SELECT AVG(purchase_amount) FROM customer);
 ```
 
-## Objective: Identify high-value customers who remain strong spenders despite discounts.
+### Objective: Determine the best-rated products based on customer reviews.
 
 3. Which are the top 5 products with the highest average review rating?
 ```sql
@@ -77,7 +78,7 @@ ORDER BY AVG(review_rating) DESC
 LIMIT 5;
 ```
 
-## Objective: Determine the best-rated products based on customer reviews.
+### Objective: Analyze whether faster shipping influences customer spending.
 
 4. Compare the average purchase amounts between Standard and Express shipping
 ```sql
@@ -88,7 +89,8 @@ WHERE shipping_type IN ('Standard', 'Express')
 GROUP BY shipping_type;
 ```
 
-## Objective: Analyze whether faster shipping influences customer spending.
+
+### Objective: Compare spending behavior and revenue between subscribers and non-subscribers.
 
 5. Do subscribed customers spend more?
 ```sql
@@ -101,7 +103,7 @@ GROUP BY subscription_status
 ORDER BY total_revenue, avg_spend DESC;
 ```
 
-## Objective: Compare spending behavior and revenue between subscribers and non-subscribers.
+### Objective: Identify products most frequently sold with discounts.
 
 6. Which 5 products have the highest percentage of discounted purchases?
 ```sql
@@ -116,7 +118,7 @@ ORDER BY discount_rate DESC
 LIMIT 5;
 ```
 
-## Objective: Identify products most frequently sold with discounts.
+### Objective: Understand customer distribution based on purchase history.
 
 7. Segment customers into New, Returning, and Loyal customers
 
@@ -137,7 +139,8 @@ FROM customer_type
 GROUP BY customer_segment;
 ```
 
-## Objective: Understand customer distribution based on purchase history.
+
+### Objective: Identify best-selling products across categories.
 
 8. What are the top 3 most purchased products within each category?
 
@@ -155,7 +158,7 @@ FROM item_counts
 WHERE item_rank <= 3;
 ```
 
-## Objective: Identify best-selling products across categories.
+### Objective: Examine the relationship between repeat purchases and subscriptions.
 
 9.Are repeat buyers also likely to subscribe?
 ```sql
@@ -166,7 +169,7 @@ WHERE previous_purchases > 5
 GROUP BY subscription_status;
 ```
 
-## Objective: Examine the relationship between repeat purchases and subscriptions.
+### Objective: Analyze which age groups contribute the most revenue.
 
 10. What is the revenue contribution of each age group?
 ```sql
@@ -177,7 +180,6 @@ GROUP BY age_group
 ORDER BY total_revenue DESC;
 ```
 
-## Objective: Analyze which age groups contribute the most revenue.
 
 ## Findings and Conclusion
 
